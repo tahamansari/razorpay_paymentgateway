@@ -1,34 +1,28 @@
-/*global cordova, module*/
+var options = {
+    "key": "rzp_test_bzQ8bL8Y1yWgyK",
+    "amount": "20000", // 2000 paise = INR 20
+    "name": "Test payment",
+    "description": "Test Product",
+    "image": "/your_logo.png",
+    "handler": function (response){
 
-module.exports = {
-    open: function (options, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Checkout", "open", [JSON.stringify(options)]);
+        alert(response.razorpay_payment_id);
+    },
+    "prefill": {
+        "name": "Test Name",
+        "email": "Test@gmail.com"
+    },
+    "notes": {
+        "address": "Hello World"
+    },
+    "theme": {
+        "color": "#F37254"
     }
 };
 
+var rzp1 = new Razorpay(options);
 
-var options = {
-    description: 'Credits towards consultation',
-    image: 'https://i.imgur.com/3g7nmJC.png',
-    currency: 'INR',
-    key: 'rzp_test_1DP5mmOlF5G5ag',
-    amount: '5000',
-    name: 'foo',
-    prefill: {email: 'pranav@razorpay.com', contact: '8879524924', name: 'Pranav Gupta'},
-    theme: {color: '#F37254'}
-}
-
-var successCallback = function(payment_id) {
-    alert('payment_id: ' + payment_id);
-}
-
-var cancelCallback = function(error) {
-    alert(error.description + ' (Error '+error.code+')');
-}
-
-function go(){
-    
-    RazorpayCheckout.open(options, successCallback, cancelCallback);
-    
-}
-
+$("#rzp-button1").click(function(e){
+    rzp1.open();
+    e.preventDefault();
+});
