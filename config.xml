@@ -31,7 +31,7 @@
     </platform>
     <preference name="DisallowOverscroll" value="true" />
 
-    <!-- <plugin spec="https://github.com/razorpay/razorpay-cordova.git" /> -->
+    <plugin spec="https://github.com/razorpay/razorpay-cordova.git" />
 
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
